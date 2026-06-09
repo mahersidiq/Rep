@@ -3,7 +3,7 @@ import ProductVisual from "./ProductVisual";
 
 export default function ProductCard({ product, addToCart }) {
   return (
-    <article className="product-card">
+    <article className={`product-card product-card--${product.flavor.toLowerCase()}`}>
       <Link className="product-card__visual" to={`/products/${product.id}`}>
         <span className="product-card__flavor">{product.flavor}</span>
         <ProductVisual flavor={product.flavor} line={product.line} size="card" />

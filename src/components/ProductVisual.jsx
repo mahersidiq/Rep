@@ -6,6 +6,7 @@ export default function ProductVisual({
   className = "",
 }) {
   const isPlus = line === "Plus";
+  const flavorClass = `rep-can--${flavor.toLowerCase()}`;
 
   return (
     <div
@@ -14,7 +15,7 @@ export default function ProductVisual({
       role="img"
     >
       <div className="can-shadow" />
-      <div className={`rep-can ${isPlus ? "rep-can--plus" : ""}`}>
+      <div className={`rep-can ${flavorClass} ${isPlus ? "rep-can--plus" : ""}`}>
         <div className="can-wall">
           <span>15 PERFORMANCE POUCHES</span>
         </div>
