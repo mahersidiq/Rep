@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import ProductVisual from "../components/ProductVisual";
+import MediaSlot from "../components/MediaSlot";
 import {
   ArrowIcon,
   BarbellIcon,
@@ -106,12 +107,6 @@ export default function Home({ addToCart }) {
 
           <div className="hero__visual-wrap">
             <div className="hero__index">01 / BUILT FOR THE IRON</div>
-            <div className="weight-plate">
-              <span>20</span>
-              <i />
-            </div>
-            <div className="chalk chalk--one" />
-            <div className="chalk chalk--two" />
             <div className="hero__product">
               <ProductVisual line="Original" flavor="Citrus" size="hero" showPouch />
             </div>
@@ -183,15 +178,12 @@ export default function Home({ addToCart }) {
 
           <div className="media-grid">
             <article className="media-card media-card--pouch">
-              <div className="media-card__scene">
-                <span className="scene-label">TRAINING LOOP / 00:07</span>
-                <div className="hand-shape">
-                  <div className="held-pouch">REP</div>
-                </div>
-                <button aria-label="Play pouch demonstration" className="play-button">
-                  <span />
-                </button>
-              </div>
+              <MediaSlot
+                alt="Athlete training with REP"
+                className="media-card__scene"
+                label="IN THE GYM"
+                src="/images/lifestyle-1.png"
+              />
               <div className="media-card__caption">
                 <div>
                   <h3>Small pouch. Big difference.</h3>
@@ -202,21 +194,12 @@ export default function Home({ addToCart }) {
             </article>
 
             <article className="media-card media-card--can">
-              <div className="media-card__scene">
-                <span className="scene-label">PRODUCT STUDY / 00:05</span>
-                <div className="plate-media">
-                  <span>45</span>
-                </div>
-                <ProductVisual
-                  className="media-product"
-                  flavor="Berry"
-                  line="Plus"
-                  size="media"
-                />
-                <button aria-label="Play product demonstration" className="play-button">
-                  <span />
-                </button>
-              </div>
+              <MediaSlot
+                alt="REP performance pouch"
+                className="media-card__scene"
+                label="THE POUCH"
+                src="/images/pouch.png"
+              />
               <div className="media-card__caption">
                 <div>
                   <h3>Built for the iron.</h3>

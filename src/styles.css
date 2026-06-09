@@ -2596,3 +2596,210 @@ p {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================================
+   IMAGE-FIRST PRODUCT & MEDIA SYSTEM (overrides legacy CSS art)
+   Real photos load automatically from /public/images; until then
+   a clean flat label/panel renders so nothing looks broken.
+   ============================================================ */
+
+/* Product visual container — flex-centered, explicit height per size. */
+.product-visual {
+  align-items: center;
+  aspect-ratio: auto;
+  display: flex;
+  height: var(--vh, 280px);
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.product-visual--hero {
+  --vh: clamp(320px, 42vw, 480px);
+}
+.product-visual--card {
+  --vh: 230px;
+  width: 100%;
+}
+.product-visual--media {
+  --vh: 240px;
+  width: 100%;
+}
+.product-visual--compare {
+  --vh: 320px;
+  min-width: 0;
+  width: 100%;
+}
+.product-visual--detail {
+  --vh: clamp(340px, 40vw, 500px);
+  width: 100%;
+}
+.product-visual--mini {
+  --vh: 84px;
+  width: 84px;
+}
+
+/* Real photo */
+.product-shot {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55));
+  transition: transform 320ms ease;
+}
+.product-card__visual:hover .product-shot,
+.comparison-card:hover .product-shot {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Flat fallback "can face" — intentional minimalist label, not fake 3D. */
+.flat-can {
+  aspect-ratio: 0.64;
+  height: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #161616 0%, #0d0d0d 100%);
+  text-align: center;
+}
+.flat-can__cap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 14px 10px 16px;
+  background: var(--accent);
+  color: #0a0a0a;
+}
+.flat-can__kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.flat-can__brand {
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+}
+.flat-can__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 12px;
+}
+.flat-can__line {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.flat-can__flavor {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 600;
+  color: var(--text);
+}
+.flat-can__dose {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.flat-can__count {
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #5a5a5a;
+  width: 70%;
+}
+.flat-can--plus .flat-can__cap {
+  background: var(--accent);
+}
+.product-visual--mini .flat-can {
+  border-radius: 8px;
+}
+.product-visual--mini .flat-can__cap {
+  padding: 5px 4px 6px;
+}
+.product-visual--mini .flat-can__brand {
+  font-size: 18px;
+}
+.product-visual--mini .flat-can__body {
+  display: none;
+}
+
+/* Loose pouch badge (fallback decoration on hero/compare) */
+.flat-pouch {
+  position: absolute;
+  right: 4%;
+  bottom: 4%;
+  width: clamp(58px, 8vw, 78px);
+  aspect-ratio: 1.25;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #0c0c0c;
+  border: 1px solid var(--border-strong);
+  transform: rotate(8deg);
+}
+.flat-pouch span {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.product-visual--card .flat-pouch,
+.product-visual--media .flat-pouch,
+.product-visual--mini .flat-pouch {
+  display: none;
+}
+/* When a real product photo is present, hide the decorative fallback pouch. */
+.product-visual:has(.product-shot) .flat-pouch {
+  display: none;
+}
+
+/* Media slot — fills the existing scene box; photo or clean panel. */
+.media-slot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.media-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media-slot__fallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 120% at 50% 0%, #171717 0%, #0c0c0c 70%);
+  border: 1px solid var(--border);
+}
+.media-slot__word {
+  font-size: clamp(22px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #2c2c2c;
+  text-transform: uppercase;
+}
+
+/* Hero: product breathes now that fake props are gone. */
+.hero__product {
+  display: grid;
+  place-items: center;
+}
