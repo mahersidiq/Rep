@@ -1,5 +1,5 @@
 # Dependencies
-node_modules
+node_modules/
 
 # Environment variables
 .env
@@ -7,12 +7,10 @@ node_modules
 .env.*.local
 
 # Build output
-dist
-client/dist
-server/dist
+dist/
 
 # Vercel
-.vercel
+.vercel/
 
 # Logs
 *.log
