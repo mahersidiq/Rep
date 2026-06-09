@@ -1,0 +1,238 @@
+/* ===== REP Design System =====
+   Background:      #0A0A0A
+   Text primary:    #F0F0F0
+   Text secondary:  #888888
+   Accent:          #C8E000
+   Border:          #1A1A1A
+   No gradients. No shadows. No blur.
+   Radius: 4px buttons/tags, 6px cards.
+   Font weights: 400, 500 only.
+=============================== */
+
+:root {
+  --bg: #0a0a0a;
+  --text: #f0f0f0;
+  --text-secondary: #888888;
+  --accent: #c8e000;
+  --border: #1a1a1a;
+  --radius-sm: 4px;
+  --radius-card: 6px;
+  --max-width: 1100px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+/* ===== Layout helpers ===== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  border-color: var(--text-secondary);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0a0a0a;
+}
+
+.btn-primary:hover {
+  background: #d4ee20;
+  border-color: #d4ee20;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Tags ===== */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.tag-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ===== Card ===== */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg);
+  padding: 24px;
+}
+
+/* ===== Forms ===== */
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.input,
+.StripeElement {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.StripeElement {
+  /* Stripe injects its own iframe; vertically center the input. */
+  line-height: 1.2;
+}
+
+/* ===== Utility ===== */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.flex {
+  display: flex;
+}
+
+.acid {
+  color: var(--accent);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 760px) {
+  .section {
+    padding: 56px 0;
+  }
+  .section-title {
+    font-size: 26px;
+  }
+  /* Stack the product row config below the description on mobile. */
+  .product-row {
+    grid-template-columns: 1fr !important;
+  }
+  .product-row > * + * {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid var(--border);
+    padding-top: 24px !important;
+  }
+  /* Stack checkout columns. */
+  .checkout-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Stack product detail columns; release sticky buy box. */
+  .detail-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .detail-grid .buy-box {
+    position: static !important;
+  }
+}

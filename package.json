@@ -1,0 +1,13 @@
+{
+  "name": "rep-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "REP — gym-specific performance pouch e-commerce site (Vite/React + Express/Stripe)",
+  "scripts": {
+    "install:all": "npm install --prefix client && npm install --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev": "node scripts/dev.js",
+    "build": "npm run build --prefix client"
+  }
+}
