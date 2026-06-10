@@ -23,11 +23,10 @@ npm run build
 - `src/components/CartDrawer.jsx` contains cart behavior and controls.
 - `src/styles.css` contains the complete responsive visual system.
 
-Product photography lives in `public/images/`. The base shot is the Original
-Citrus can (`rep-can.webp`); Mint and Berry variants are derived with a CSS
-hue-rotate filter (`.product-visual--mint` / `.product-visual--berry` in
-`src/styles.css`). Drop in per-flavor photos and remove those filters once
-final photography for every SKU is available.
+Product photography lives in `public/images/`. Each SKU has a dedicated shot
+named `<line>-<flavor>.webp` (for example `original-citrus.webp` or
+`plus-berry.webp`), and `ProductVisual` resolves the image from the product's
+line and flavor.
 
 ## Stripe checkout
 
