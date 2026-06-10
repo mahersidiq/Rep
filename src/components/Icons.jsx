@@ -96,6 +96,15 @@ export const MenuIcon = (props) => (
   </Icon>
 );
 
+export const StarIcon = (props) => (
+  <Icon {...props}>
+    <path
+      d="m12 2.8 2.8 5.9 6.2.8-4.6 4.4 1.2 6.3L12 17.1l-5.6 3.1 1.2-6.3L3 9.5l6.2-.8L12 2.8Z"
+      fill="currentColor"
+    />
+  </Icon>
+);
+
 export const CheckIcon = (props) => (
   <Icon {...props}>
     <path d="m5 12 4 4L19 6" stroke="currentColor" strokeWidth="1.8" />

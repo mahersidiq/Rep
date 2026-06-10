@@ -12,6 +12,7 @@ import {
   LeafIcon,
   PouchIcon,
   PumpIcon,
+  StarIcon,
   WaterIcon,
 } from "../components/Icons";
 import { featuredProducts, products } from "../data/products";
@@ -60,6 +61,62 @@ const timeline = [
   ["POST-WORKOUT", "Come down clean. Stay clear-headed and refreshed."],
 ];
 
+const marqueeItems = [
+  "No Mixing",
+  "No Bloat",
+  "No Shaker",
+  "Redosable",
+  "100mg Caffeine",
+  "Built for Training",
+];
+
+const testimonials = [
+  {
+    quote:
+      "I pop one in walking into the gym and I'm dialed by my first working set. No shaker, no waiting 30 minutes.",
+    name: "Marcus T.",
+    detail: "Powerlifter · Original Citrus",
+    initials: "MT",
+  },
+  {
+    quote:
+      "The redosing is the whole game. Halfway through a two-hour session I tuck another pouch and the second wind is real.",
+    name: "Dana K.",
+    detail: "CrossFit Coach · Original Mint",
+    initials: "DK",
+  },
+  {
+    quote:
+      "Pre-workout drinks wreck my stomach on heavy squat days. This hits just as hard with none of the slosh.",
+    name: "Andre B.",
+    detail: "Strongman · Plus Berry",
+    initials: "AB",
+  },
+];
+
+const faqs = [
+  [
+    "How fast does it kick in?",
+    "Most people feel the first effects within 5 minutes, with peak focus and energy between 15 and 45 minutes. Buccal absorption skips the digestive system, so it hits faster than a drink.",
+  ],
+  [
+    "How is this different from a pre-workout drink?",
+    "No mixing, no 30-minute wait, no slosh in your stomach mid-set. One pouch delivers 100mg of caffeine plus focus ingredients through the lining of your lip while you train.",
+  ],
+  [
+    "Can I use more than one pouch per session?",
+    "Yes — that's the point of redosable energy. Many lifters tuck a second pouch mid-session for long workouts. Assess your tolerance first and keep total caffeine in your daily comfort zone.",
+  ],
+  [
+    "Does REP Plus contain tobacco?",
+    "No. REP Plus contains 3mg of pharmaceutical-grade nicotine but is 100% tobacco-free. It's for adult nicotine users 21+ only. Nicotine is an addictive chemical.",
+  ],
+  [
+    "What does it taste like?",
+    "Clean and bright, not medicinal. Citrus is sharp and fresh, Mint runs cold, and Berry is dark and smooth. Flavor lasts the full 30-45 minutes the pouch is in.",
+  ],
+];
+
 const formula = [
   ["Caffeine", "Clean, effective energy and mental alertness.", BoltIcon],
   ["L-Theanine", "Promotes calm focus and reduces jitters.", FocusIcon],
@@ -106,14 +163,8 @@ export default function Home({ addToCart }) {
 
           <div className="hero__visual-wrap">
             <div className="hero__index">01 / BUILT FOR THE IRON</div>
-            <div className="weight-plate">
-              <span>20</span>
-              <i />
-            </div>
-            <div className="chalk chalk--one" />
-            <div className="chalk chalk--two" />
             <div className="hero__product">
-              <ProductVisual line="Original" flavor="Citrus" size="hero" showPouch />
+              <ProductVisual line="Original" flavor="Citrus" size="hero" />
             </div>
             <div className="hero__stamp">
               <span>NO MIXING</span>
@@ -140,6 +191,18 @@ export default function Home({ addToCart }) {
           ))}
         </div>
       </section>
+
+      <div aria-hidden="true" className="marquee">
+        <div className="marquee__track">
+          {[0, 1].map((copy) => (
+            <div className="marquee__group" key={copy}>
+              {marqueeItems.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
 
       <section className="section product-section" id="products">
         <div className="container">
@@ -184,13 +247,14 @@ export default function Home({ addToCart }) {
           <div className="media-grid">
             <article className="media-card media-card--pouch">
               <div className="media-card__scene">
-                <span className="scene-label">TRAINING LOOP / 00:07</span>
-                <div className="hand-shape">
-                  <div className="held-pouch">REP</div>
-                </div>
-                <button aria-label="Play pouch demonstration" className="play-button">
-                  <span />
-                </button>
+                <span className="scene-label">THE POUCH / DETAIL</span>
+                <img
+                  alt="REP performance pouch up close"
+                  className="scene-photo scene-photo--pouch"
+                  loading="lazy"
+                  src="/images/rep-can.webp"
+                />
+                <span className="scene-tag">Tear · Tuck · Train</span>
               </div>
               <div className="media-card__caption">
                 <div>
@@ -203,19 +267,14 @@ export default function Home({ addToCart }) {
 
             <article className="media-card media-card--can">
               <div className="media-card__scene">
-                <span className="scene-label">PRODUCT STUDY / 00:05</span>
-                <div className="plate-media">
-                  <span>45</span>
-                </div>
-                <ProductVisual
-                  className="media-product"
-                  flavor="Berry"
-                  line="Plus"
-                  size="media"
+                <span className="scene-label">PRODUCT STUDY / THE CAN</span>
+                <img
+                  alt="REP Original Citrus can"
+                  className="scene-photo scene-photo--can"
+                  loading="lazy"
+                  src="/images/rep-can.webp"
                 />
-                <button aria-label="Play product demonstration" className="play-button">
-                  <span />
-                </button>
+                <span className="scene-tag">15 Pouches / Can</span>
               </div>
               <div className="media-card__caption">
                 <div>
@@ -279,6 +338,62 @@ export default function Home({ addToCart }) {
                 <h3>{name}</h3>
                 <p>{description}</p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section testimonial-section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">From the floor</p>
+              <h2>Lifters are locked in.</h2>
+            </div>
+            <p className="section-heading__note">
+              Real training, real sessions. Here's what they're saying.
+            </p>
+          </div>
+          <div className="testimonial-grid">
+            {testimonials.map(({ quote, name, detail, initials }) => (
+              <article className="testimonial-card" key={name}>
+                <div aria-label="5 out of 5 stars" className="testimonial-card__stars" role="img">
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <StarIcon key={i} size={16} />
+                  ))}
+                </div>
+                <blockquote>“{quote}”</blockquote>
+                <footer>
+                  <span aria-hidden="true" className="testimonial-card__avatar">
+                    {initials}
+                  </span>
+                  <div className="testimonial-card__name">
+                    <strong>{name}</strong>
+                    <span>{detail}</span>
+                  </div>
+                </footer>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section faq-section" id="faq">
+        <div className="container faq-grid">
+          <div className="faq-copy">
+            <p className="eyebrow">Questions</p>
+            <h2>Before you tuck.</h2>
+            <p>
+              Everything you need to know before your first pouch. Still curious?
+              Reach out at <a href="mailto:training@rep.example">training@rep.example</a>.
+            </p>
+          </div>
+          <div className="faq-list">
+            {faqs.map(([question, answer]) => (
+              <details className="faq-item" key={question}>
+                <summary>{question}</summary>
+                <p>{answer}</p>
+              </details>
             ))}
           </div>
         </div>
@@ -362,7 +477,7 @@ function ComparisonCard({
         </div>
       </div>
       <div className="comparison-card__visual">
-        <ProductVisual flavor={flavor} line={line} size="compare" showPouch />
+        <ProductVisual flavor={flavor} line={line} size="compare" />
       </div>
       {restricted && <span className="age-tag">21+ ONLY</span>}
     </article>

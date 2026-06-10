@@ -19,13 +19,15 @@ npm run build
 
 - `src/pages/Home.jsx` contains the ordered homepage experience.
 - `src/data/products.js` is the product catalog source.
-- `src/components/ProductVisual.jsx` renders the swappable REP can artwork.
+- `src/components/ProductVisual.jsx` renders the product photography.
 - `src/components/CartDrawer.jsx` contains cart behavior and controls.
 - `src/styles.css` contains the complete responsive visual system.
 
-Product and media art is code-native so the build works without external assets.
-Final photography can replace the scene contents while retaining the existing
-layout, labels, and interaction structure.
+Product photography lives in `public/images/`. The base shot is the Original
+Citrus can (`rep-can.webp`); Mint and Berry variants are derived with a CSS
+hue-rotate filter (`.product-visual--mint` / `.product-visual--berry` in
+`src/styles.css`). Drop in per-flavor photos and remove those filters once
+final photography for every SKU is available.
 
 ## Stripe checkout
 

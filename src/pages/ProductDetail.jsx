@@ -15,11 +15,9 @@ export default function ProductDetail({ addToCart }) {
         <div className="container product-detail__grid">
           <div className="product-detail__visual">
             <span className="product-detail__index">REP / {product.line.toUpperCase()}</span>
-            <div className="product-detail__plate" />
             <ProductVisual
               flavor={product.flavor}
               line={product.line}
-              showPouch
               size="detail"
             />
           </div>

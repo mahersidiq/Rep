@@ -3,6 +3,20 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { CartIcon, MenuIcon, CloseIcon } from "./Icons";
 import CartDrawer from "./CartDrawer";
 
+const REVEAL_SELECTOR = [
+  ".section-heading",
+  ".technical-heading",
+  ".benefit-card",
+  ".product-card",
+  ".why-item",
+  ".media-card",
+  ".timeline__step",
+  ".formula-card",
+  ".testimonial-card",
+  ".faq-item",
+  ".comparison-card",
+].join(", ");
+
 export default function Layout({ children, cartApi }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,6 +33,30 @@ export default function Layout({ children, cartApi }) {
   useEffect(() => {
     setMobileOpen(false);
     window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -60px", threshold: 0.1 },
+    );
+    document.querySelectorAll(REVEAL_SELECTOR).forEach((el) => {
+      const siblings = el.parentElement ? [...el.parentElement.children] : [el];
+      el.style.setProperty("--reveal-delay", `${(siblings.indexOf(el) % 4) * 70}ms`);
+      el.classList.add("reveal");
+      observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, [location.pathname]);
 
   const sectionLink = (id) => (location.pathname === "/" ? `#${id}` : `/#${id}`);
