@@ -163,14 +163,8 @@ export default function Home({ addToCart }) {
 
           <div className="hero__visual-wrap">
             <div className="hero__index">01 / BUILT FOR THE IRON</div>
-            <div className="weight-plate">
-              <span>20</span>
-              <i />
-            </div>
-            <div className="chalk chalk--one" />
-            <div className="chalk chalk--two" />
             <div className="hero__product">
-              <ProductVisual line="Original" flavor="Citrus" size="hero" showPouch />
+              <ProductVisual line="Original" flavor="Citrus" size="hero" />
             </div>
             <div className="hero__stamp">
               <span>NO MIXING</span>
@@ -253,10 +247,13 @@ export default function Home({ addToCart }) {
           <div className="media-grid">
             <article className="media-card media-card--pouch">
               <div className="media-card__scene">
-                <span className="scene-label">TRAINING LOOP / 00:07</span>
-                <div className="hand-shape">
-                  <div className="held-pouch">REP</div>
-                </div>
+                <span className="scene-label">THE POUCH / DETAIL</span>
+                <img
+                  alt="REP performance pouch up close"
+                  className="scene-photo scene-photo--pouch"
+                  loading="lazy"
+                  src="/images/rep-can.webp"
+                />
                 <span className="scene-tag">Tear · Tuck · Train</span>
               </div>
               <div className="media-card__caption">
@@ -270,15 +267,12 @@ export default function Home({ addToCart }) {
 
             <article className="media-card media-card--can">
               <div className="media-card__scene">
-                <span className="scene-label">PRODUCT STUDY / 00:05</span>
-                <div className="plate-media">
-                  <span>45</span>
-                </div>
-                <ProductVisual
-                  className="media-product"
-                  flavor="Berry"
-                  line="Plus"
-                  size="media"
+                <span className="scene-label">PRODUCT STUDY / THE CAN</span>
+                <img
+                  alt="REP Original Citrus can"
+                  className="scene-photo scene-photo--can"
+                  loading="lazy"
+                  src="/images/rep-can.webp"
                 />
                 <span className="scene-tag">15 Pouches / Can</span>
               </div>
@@ -483,7 +477,7 @@ function ComparisonCard({
         </div>
       </div>
       <div className="comparison-card__visual">
-        <ProductVisual flavor={flavor} line={line} size="compare" showPouch />
+        <ProductVisual flavor={flavor} line={line} size="compare" />
       </div>
       {restricted && <span className="age-tag">21+ ONLY</span>}
     </article>
