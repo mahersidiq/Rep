@@ -249,10 +249,10 @@ export default function Home({ addToCart }) {
               <div className="media-card__scene">
                 <span className="scene-label">THE POUCH / DETAIL</span>
                 <img
-                  alt="REP performance pouch up close"
+                  alt="REP Plus Mint can with performance pouch up close"
                   className="scene-photo scene-photo--pouch"
                   loading="lazy"
-                  src="/images/rep-can.webp"
+                  src="/images/plus-mint.webp"
                 />
                 <span className="scene-tag">Tear · Tuck · Train</span>
               </div>
@@ -269,10 +269,10 @@ export default function Home({ addToCart }) {
               <div className="media-card__scene">
                 <span className="scene-label">PRODUCT STUDY / THE CAN</span>
                 <img
-                  alt="REP Original Citrus can"
+                  alt="REP Original Berry can beside a weight plate"
                   className="scene-photo scene-photo--can"
                   loading="lazy"
-                  src="/images/rep-can.webp"
+                  src="/images/original-berry.webp"
                 />
                 <span className="scene-tag">15 Pouches / Can</span>
               </div>

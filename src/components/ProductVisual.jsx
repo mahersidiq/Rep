@@ -11,7 +11,7 @@ export default function ProductVisual({
       <img
         alt={`REP ${line} ${flavor} performance pouch can with pouch`}
         loading="lazy"
-        src="/images/rep-can.webp"
+        src={`/images/${line.toLowerCase()}-${flavor.toLowerCase()}.webp`}
       />
     </div>
   );
